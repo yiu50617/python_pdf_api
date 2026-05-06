@@ -11,14 +11,12 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends fonts-ipafont-gothic \
     && rm -rf /var/lib/apt/lists/*
 
-COPY gas/python_pdf_api/requirements.txt ./requirements.txt
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY gas/python_pdf_api ./gas/python_pdf_api
-COPY *.pdf ./
-
-RUN mkdir -p gas/python_pdf_api/outputs
+COPY . .
+RUN mkdir -p outputs
 
 EXPOSE 8787
 
-CMD ["python", "gas/python_pdf_api/server.py"]
+CMD ["python", "server.py"]
