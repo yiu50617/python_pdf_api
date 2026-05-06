@@ -14,7 +14,7 @@ RUN apt-get update \
 COPY gas/python_pdf_api/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY gas ./gas
+COPY gas/python_pdf_api ./gas/python_pdf_api
 COPY *.pdf ./
 
 RUN mkdir -p gas/python_pdf_api/outputs
